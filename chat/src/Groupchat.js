@@ -1,9 +1,10 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import chat from "./chat";
-import config from "./config";
+// import chat from "../lib/chat";
+// import config from "../config";
+// import "./GroupChat.css";
 
-class Groupchat extends React.Component {
+class GroupChat extends React.Component {
   constructor(props) {
     super(props);
 
@@ -128,4 +129,4 @@ class Groupchat extends React.Component {
   }
 }
 
-export default Groupchat;
+export default GroupChat;

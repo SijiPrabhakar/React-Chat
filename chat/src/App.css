@@ -21,7 +21,7 @@ ul li{
   font-display: top;
   color: #0084ff;
 }
-.chat {
+.chats {
 	right: 0;
 	width: 120px;
   padding-left: 88%;
@@ -78,3 +78,6 @@ ul li{
   border-bottom-right-radius: 30px;
 }
 
+/* .App {
+  size: unset;
+} */
