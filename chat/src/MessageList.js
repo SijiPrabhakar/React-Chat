@@ -24,9 +24,9 @@ class MessageList extends React.Component {
           "message": "Hi Bot"
         }
       ],
-      identity: "bot",
+      identity: "user",
       obj: {
-        "idname": "bot",
+        "idname": "user",
         "message": "Hello"
       }
 
@@ -44,25 +44,43 @@ class MessageList extends React.Component {
   handleChange(e) {
     // this.scrollToBottom();
     this.setState({
-      message: e.target.value,
+      
+      obj: {
+        "idname": "user",
+        "message": e.target.value
+      }
     })
     
   }
 
   handleSubmit(e) {
     e.preventDefault()
-
+    
     console.log(this.state.obj+"OBJ")
     var json = JSON.parse(JSON.stringify(this.state.obj))
     console.log(json+"JSON")
   
     this.setState({
-      // messages: this.state.messages.concat(this.state.message),   
-      // message: ''  ,
-      // response: 'Thanks for asking questions... we will answer u shortly :)',
+
+    
       messages: this.state.messages.concat(json)
+
      
-    })  
+    })
+    let url = "http://127.0.0.1:5000/home/ds"
+    
+    // fetch(url).then(resp => resp.json()).then(messages => this.setState({messages}));
+
+    fetch(url,{
+      "method" : "POST",
+      "body" : json,
+      headers:{
+          "Content-Type" : "application/json",
+      },
+  }).then(obj => this.setState({obj}));
+
+    console.log(this.state.messages)
+    console.log(json)
    
   }
   scrollToBottom = () => {
@@ -78,7 +96,7 @@ class MessageList extends React.Component {
     console.log("did update");
   }
   render() {
-    console.log("render");
+    // console.log("render");
     return (
       <div className="chatWindow">
         {/* <p className="title" >Welcome Buddies...</p> */}
@@ -90,19 +108,19 @@ class MessageList extends React.Component {
               {this.state.identity == data.idname ? (
                
                 <li className="self">
-                   {console.log(this.state.identity+ "$$"+data.idname+"$$"+data.message)}
+                   {/* {console.log(this.state.identity+ "$$"+data.idname+"$$"+data.message)} */}
                   <div className="msg">
                     <p>{data.idname}</p>
-                    {console.log(data.message+" MSG In bot")}
+                    {/* {console.log(data.message+" MSG In bot")} */}
                     <div className="message"> {data.message}</div>
                   </div>
                 </li>
               ) : (
                 <li className="other">
-                   {console.log(this.state.identity+ "&&"+data.idname+"&&"+data.message)}
+                   {/* {console.log(this.state.identity+ "&&"+data.idname+"&&"+data.message)} */}
                   <div className="msg">
                     <p>{data.idname}</p>
-                    {console.log(data.message+" MSG")}
+                    {/* {console.log(data.message+" MSG")} */}
                     <div className="message"> {data.message} </div>
                   </div>
                 </li>
