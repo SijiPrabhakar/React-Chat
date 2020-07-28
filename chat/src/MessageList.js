@@ -57,27 +57,51 @@ class MessageList extends React.Component {
     e.preventDefault()
     
     console.log(this.state.obj+"OBJ")
-    var json = JSON.parse(JSON.stringify(this.state.obj))
+    var json = JSON.stringify(this.state.obj)
     console.log(json+"JSON")
   
     this.setState({
 
     
-      messages: this.state.messages.concat(json)
+      messages: this.state.messages.concat(json),
+      message:""
 
      
     })
     let url = "http://127.0.0.1:5000/home/ds"
     
-    // fetch(url).then(resp => resp.json()).then(messages => this.setState({messages}));
+  //   // fetch(url).then(resp => resp.json()).then(messages => this.setState({messages}));
 
-    fetch(url,{
-      "method" : "POST",
-      "body" : json,
-      headers:{
-          "Content-Type" : "application/json",
-      },
-  }).then(obj => this.setState({obj}));
+  //   fetch(url,{
+  //     "method" : "POST",
+  //     "body" : json,
+  //     headers:{
+  //         "Content-Type" : "application/json",
+  //     },
+  // }).then(obj => this.setState({obj}));
+
+
+  const options = { 
+    method: 'post',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+       body: json
+       
+  }    
+  
+  fetch(url, options)
+  .then(response => {
+      //  console.log(request)        
+   if (response.ok) {
+           return response.json();
+         } else {
+            throw new Error('Something went wrong ...');
+         }
+       })
+         .then(obj => this.setState({obj}))
+         .catch(error => this.setState({ error }));
 
     console.log(this.state.messages)
     console.log(json)
@@ -137,6 +161,7 @@ class MessageList extends React.Component {
             <input
               className="textarea input"
               type="text"
+              value = {this.state.message}
               placeholder="Enter your message..."
               onChange={this.handleChange}
             />
