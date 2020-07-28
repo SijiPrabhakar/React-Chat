@@ -1,6 +1,6 @@
 import {Component} from "react";
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import "./GroupChat.css";
 // const messages = ['hi', 'hello'];
  
@@ -24,6 +24,7 @@ class MessageList extends React.Component {
           "message": "Hi Bot"
         }
       ],
+      message : "",
       identity: "user",
       obj: {
         "idname": "user",
@@ -48,7 +49,8 @@ class MessageList extends React.Component {
       obj: {
         "idname": "user",
         "message": e.target.value
-      }
+      },
+      message:e.target.value
     })
     
   }
@@ -56,17 +58,14 @@ class MessageList extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     
+    
     console.log(this.state.obj+"OBJ")
-    var json = JSON.stringify(this.state.obj)
+    var json = JSON.parse(JSON.stringify(this.state.obj))
     console.log(json+"JSON")
   
     this.setState({
-
-    
       messages: this.state.messages.concat(json),
-      message:""
-
-     
+      message : ""
     })
     let url = "http://127.0.0.1:5000/home/ds"
     
@@ -87,13 +86,12 @@ class MessageList extends React.Component {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json'
     },
-       body: json
+       body: JSON.stringify(this.state.obj)
        
   }    
   
   fetch(url, options)
-  .then(response => {
-      //  console.log(request)        
+  .then(response => {      
    if (response.ok) {
            return response.json();
          } else {
@@ -101,7 +99,12 @@ class MessageList extends React.Component {
          }
        })
          .then(obj => this.setState({obj}))
+         .then(messages => this.setState({messages: this.state.messages.concat(this.state.obj)}))
          .catch(error => this.setState({ error }));
+    
+    // this.setState({
+    //   messages: this.state.messages.concat(this.state.obj),
+    // })
 
     console.log(this.state.messages)
     console.log(json)
@@ -116,7 +119,8 @@ class MessageList extends React.Component {
     this.scrollToBottom();
   }
   componentDidUpdate() {
-    // this.scrollToBottom();
+    this.scrollToBottom();
+    
     console.log("did update");
   }
   render() {
