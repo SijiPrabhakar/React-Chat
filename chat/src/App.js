@@ -3,6 +3,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
 
 import MessageList from "./MessageList";
+import Menu from "./Menu";
 // import GroupChat from "./GroupChat";
 
 
@@ -16,10 +17,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <Menu />
         <MessageList />
-        {/* <Msg></Msg> */}
-       {/* <GroupChat></GroupChat> */}
-        {/* <SendMessageForm /> */}
+        
      </div>
     )
   }
