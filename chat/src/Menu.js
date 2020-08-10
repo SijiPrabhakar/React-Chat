@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import "./App.css";
+import "./Menu.css";
 import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
+// import 'bootstrap/dist/css/bootstrap.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
+
 
 import MessageList from "./MessageList";
 // import GroupChat from "./GroupChat";
@@ -32,24 +36,27 @@ class Menu extends React.Component {
   
   render() {
     return (
-        <div>
+        
+        <div className="menu">
         <CheeseburgerMenu
         isOpen={this.state.menuOpen}
         closeCallback={this.closeMenu.bind(this)}>
         {/* <MenuContent closeCallback={this.closeMenu.bind(this)}/> */}
+        <a className="help">Help</a>
       </CheeseburgerMenu>
       
       <HamburgerMenu
         isOpen={this.state.menuOpen}
         menuClicked={this.openMenu.bind(this)}
-        width={32}
-        height={24}
+        width={26}
+        height={16}
         strokeWidth={3}
         rotate={0}
-        color='blue'
+        color='purple'
         borderRadius={0}
         animationDuration={0.5}
       />
+      <h2 className="header">Hey Buddy...</h2>
       </div>
     )
   }
