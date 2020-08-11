@@ -6,11 +6,11 @@ import HamburgerMenu from 'react-hamburger-menu'
 // import 'bootstrap/dist/css/bootstrap.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
-
-
-import MessageList from "./MessageList";
-// import GroupChat from "./GroupChat";
-
+import {Link} from 'react-router-dom';
+import PopUp from "./PopUp";
+import "./PopUp.css";
+import App from "./App";
+import HelpContent from "./HelpContent";
 
 class Menu extends React.Component {
       
@@ -18,9 +18,15 @@ class Menu extends React.Component {
     super()
     this.state ={
         menuOpen : false,
+        seen: false
     }
    
   }
+  togglePop = () => {
+    this.setState({
+      seen: !this.state.seen
+    });
+  };
   openMenu(){
       this.setState({
           menuOpen : true
@@ -42,7 +48,13 @@ class Menu extends React.Component {
         isOpen={this.state.menuOpen}
         closeCallback={this.closeMenu.bind(this)}>
         {/* <MenuContent closeCallback={this.closeMenu.bind(this)}/> */}
-        <a className="help">Help</a>
+        {/* <div>
+        <div className="btn" onClick={this.togglePop}>
+        
+        </div>
+        {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
+      </div> */}
+      <Link to = '/help'> Help !</Link>
       </CheeseburgerMenu>
       
       <HamburgerMenu
@@ -57,6 +69,7 @@ class Menu extends React.Component {
         animationDuration={0.5}
       />
       <h2 className="header">Hey Buddy...</h2>
+      
       </div>
     )
   }

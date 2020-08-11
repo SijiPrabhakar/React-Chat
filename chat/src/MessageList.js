@@ -1,6 +1,7 @@
 import {Component} from "react";
 import React from "react";
 // import "./App.css";
+import Menu from "./Menu";
 import "./GroupChat.css";
 // const messages = ['hi', 'hello'];
  
@@ -126,6 +127,7 @@ class MessageList extends React.Component {
   render() {
     // console.log("render");
     return (
+      <div><Menu />
       <div className="chatWindow">
         {/* <p className="title" >Welcome Buddies...</p> */}
         <ul  className="chat" id="chatList">
@@ -170,6 +172,8 @@ class MessageList extends React.Component {
               onChange={this.handleChange}
             />
           </form>
+        </div>
+        
         </div>
         </div>
 

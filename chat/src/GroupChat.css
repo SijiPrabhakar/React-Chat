@@ -189,14 +189,17 @@
   .self {
     justify-content: flex-end;
     align-items: flex-end;
+    opacity: 0%;
   }
   .self .msg {
     order: 1;
     border-bottom-right-radius: 0px;
     box-shadow: 1px 2px 0px #d4d4d4;
+    
   }
   .self .avatar {
     order: 2;
+    
   }
   .self .avatar:after {
     content: "";
@@ -313,3 +316,11 @@
     font-weight: 400;
   }
   
+  .content{
+    text-align: center;
+    color: #ffcccc;
+    width:500px;
+    margin: auto;
+    border: 5px solid red;
+    
+  }

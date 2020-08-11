@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 import "./App.css";
-
 import MessageList from "./MessageList";
 import Menu from "./Menu";
-// import GroupChat from "./GroupChat";
+import HelpContent from "./HelpContent";
 
 
 class App extends React.Component {
@@ -17,8 +16,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Menu />
-        <MessageList />
+        {/* <Menu />
+        <MessageList /> */}
+        <Switch>
+          
+          <Route  exact path = "/" component = {MessageList}></Route>
+          <Route  exact path = "/help" component = {HelpContent}></Route>
+        </Switch>
         
      </div>
     )

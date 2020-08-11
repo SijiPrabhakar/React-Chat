@@ -21,25 +21,19 @@ ul li{
   font-display: top;
   color: #0084ff;
 }
-.chats {
-	right: 0;
-	width: 120px;
-  padding-left: 88%;
-  /* position: absolute; */
-  /* padding-bottom: 120% !important ; */
-  margin-bottom: 15%;
-}
 
 .input{
   width: 100%;
   height: 35px;
   position: absolute;
-  background-color: #B0C4DE;
+  background-color: #6da0e4;
+  opacity: 50%;
   border-color: #B0C4DE;
   color: white;
   position: fixed;
    left: 0;
    bottom: 0;
+   
 }
 .send {
   width: 10%;
@@ -53,7 +47,7 @@ ul li{
    bottom: 0;
    float: right;
 }
-.him{
+/* .him{
   background: #eee;
   float: left;
 }
@@ -62,10 +56,10 @@ ul li{
   float: right;
   background: #0084ff;
   color: #fff;
-  /* size: initial; */
-}
+  
+} */
 
-.him + .me{
+/* .him + .me{
   border-bottom-right-radius: 5px;
 } 
 
@@ -76,7 +70,7 @@ ul li{
 
 .me:last-of-type {
   border-bottom-right-radius: 30px;
-}
+} */
 
 /* .App {
   size: unset;
