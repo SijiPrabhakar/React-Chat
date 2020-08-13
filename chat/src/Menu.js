@@ -44,6 +44,7 @@ class Menu extends React.Component {
     return (
         
         <div className="menu">
+      
         <CheeseburgerMenu
         isOpen={this.state.menuOpen}
         closeCallback={this.closeMenu.bind(this)}>
@@ -69,6 +70,7 @@ class Menu extends React.Component {
         animationDuration={0.5}
       />
       <h2 className="header">Hey Buddy...</h2>
+     
       
       </div>
     )

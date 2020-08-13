@@ -7,8 +7,10 @@ import "./GroupChat.css";
  
 class MessageList extends React.Component {
   
+  
   constructor() {
     super()
+    var newText = ''
     // this.myRef = React.createRef() 
     this.state = {
       // messages: ['hi', 'hello',  'hey', 'wel', 'sadhj', 'sdfsd', 'sefs', 'sfasdj', 'sfsdf', 'hgk', 'khgk', 'hi', 'hello',  'hey', 'wel', 'sadhj', 'sdfsd', 'sefs', 'sfasdj', 'sfsdf', 'hgk', 'siji'],
@@ -63,6 +65,7 @@ class MessageList extends React.Component {
     console.log(this.state.obj+"OBJ")
     var json = JSON.parse(JSON.stringify(this.state.obj))
     console.log(json+"JSON")
+
   
     this.setState({
       messages: this.state.messages.concat(json),
@@ -128,6 +131,7 @@ class MessageList extends React.Component {
     // console.log("render");
     return (
       <div><Menu />
+       
       <div className="chatWindow">
         {/* <p className="title" >Welcome Buddies...</p> */}
         <ul  className="chat" id="chatList">
@@ -151,7 +155,10 @@ class MessageList extends React.Component {
                   <div className="msg">
                     <p>{data.idname}</p>
                     {/* {console.log(data.message+" MSG")} */}
-                    <div className="message"> {data.message} </div>
+                    {/* <div className="message"> {data.message} </div> */}
+                    {(data.message).split('\\n').map((item,i)=>{
+                      return <div className="message" key={i}>{item}</div>
+                      })}
                   </div>
                 </li>
               )}
