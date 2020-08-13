@@ -108,17 +108,43 @@ class MessageList extends React.Component {
   assignData = () => {
     let newObj= {
       "idname": "bot",
-      "message": this.props.location.user
+      "message": this.props.location.userData
     }
     this.setState({
         messages: this.state.messages.concat(newObj),
       })
     console.log(this.props.location.user+"DATA")
+    console.log(this.props.location.userData+"UserDATA")
+  }
+  sendUser() {
+    
+    let url ="http://127.0.0.1:5000/home/user";
+    const options = { 
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+         body: JSON.stringify(this.state.obj)
+         
+    } 
+    fetch(url, options)
+  .then(response => {      
+   if (response.ok) {
+           return response.json();
+         } else {
+            throw new Error('Something went wrong ...');
+         }
+       })
+         .then(obj => this.setState({obj}))
+         .then(messages => this.setState({messages: this.state.messages.concat(this.state.obj)}))
+         .catch(error => this.setState({ error }));
   }
   componentDidMount() {
     console.log("did mount");
     this.scrollToBottom();
     this.assignData();
+    this.sendUser();
   }
   componentDidUpdate() {
     this.scrollToBottom();
@@ -126,7 +152,7 @@ class MessageList extends React.Component {
     console.log("did update");
   }
   render() {
-    const { user } = this.props.location
+    // const { user } = this.props.location
     return (
       <div><Menu />
       <div className="chatWindow">

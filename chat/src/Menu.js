@@ -55,7 +55,7 @@ class Menu extends React.Component {
         </div>
         {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
       </div> */}
-      <Link to = '/help'> Help !</Link>
+      <Link to = "/help" target="_blank"> Help !</Link>
       </CheeseburgerMenu>
       
       <HamburgerMenu
