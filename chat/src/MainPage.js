@@ -50,9 +50,9 @@ class MainPage extends React.Component {
             </Link>
           </div>
         
-          <h2>{this.state.currentDateTime}</h2>
-          <div style={{'backgroundColor': status === 'approved' ? 'blue' : status === 'pending' ? 'black' : 'red'}}>
-</div>
+          {/* <h2>{this.state.currentDateTime}</h2> */}
+          {/* <div style={{'backgroundColor': status === 'approved' ? 'blue' : status === 'pending' ? 'black' : 'red'}}>
+</div> */}
           
          
       </div>
