@@ -10,23 +10,9 @@ class MessageList extends React.Component {
   
   constructor() {
     super()
-    var newText = ''
-    // this.myRef = React.createRef() 
+    
     this.state = {
-      // messages: ['hi', 'hello',  'hey', 'wel', 'sadhj', 'sdfsd', 'sefs', 'sfasdj', 'sfsdf', 'hgk', 'khgk', 'hi', 'hello',  'hey', 'wel', 'sadhj', 'sdfsd', 'sefs', 'sfasdj', 'sfsdf', 'hgk', 'siji'],
-      // message: '',
-      // responses: [],
-      // response: 'welcome buddy... how can i help you?'
-      messages: [
-        {
-          "idname": "bot",
-         "message": "Hi User"
-        },
-        {
-          "idname": "user",
-          "message": "Hi Bot"
-        }
-      ],
+      messages: [ ],
       message : "",
       identity: "user",
       obj: {
@@ -39,6 +25,7 @@ class MessageList extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.scrollToBottom = this.scrollToBottom.bind(this)
+    this.assignData = this.assignData.bind(this)
   
   }
   // scrollToBottom = () => {
@@ -118,9 +105,20 @@ class MessageList extends React.Component {
     const chat = document.getElementById("chatList");
     chat.scrollTop = chat.scrollHeight;
   };
+  assignData = () => {
+    let newObj= {
+      "idname": "bot",
+      "message": this.props.location.user
+    }
+    this.setState({
+        messages: this.state.messages.concat(newObj),
+      })
+    console.log(this.props.location.user+"DATA")
+  }
   componentDidMount() {
     console.log("did mount");
     this.scrollToBottom();
+    this.assignData();
   }
   componentDidUpdate() {
     this.scrollToBottom();
@@ -128,10 +126,9 @@ class MessageList extends React.Component {
     console.log("did update");
   }
   render() {
-    // console.log("render");
+    const { user } = this.props.location
     return (
       <div><Menu />
-       
       <div className="chatWindow">
         {/* <p className="title" >Welcome Buddies...</p> */}
         <ul  className="chat" id="chatList">

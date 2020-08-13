@@ -4,7 +4,7 @@ import "./App.css";
 import MessageList from "./MessageList";
 import Menu from "./Menu";
 import HelpContent from "./HelpContent";
-
+import MainPage from "./MainPage";
 
 class App extends React.Component {
       
@@ -20,7 +20,8 @@ class App extends React.Component {
         <MessageList /> */}
         <Switch>
           
-          <Route  exact path = "/" component = {MessageList}></Route>
+          <Route  exact path = "/" component = {MainPage}></Route>
+          <Route exact path = "/chat" component ={MessageList}></Route>
           <Route  exact path = "/help" component = {HelpContent}></Route>
         </Switch>
         
