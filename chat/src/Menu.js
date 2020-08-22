@@ -7,10 +7,6 @@ import HamburgerMenu from 'react-hamburger-menu'
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 import {Link} from 'react-router-dom';
-import PopUp from "./PopUp";
-import "./PopUp.css";
-import App from "./App";
-import HelpContent from "./HelpContent";
 
 class Menu extends React.Component {
       
